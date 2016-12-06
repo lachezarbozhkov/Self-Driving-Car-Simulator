@@ -60,3 +60,18 @@ No tire may leave the drivable portion of the track surface. The car may not pop
 
 
 
+## Solution design
+
+
+## Approach taken
+
+
+## Model architecture
+
+
+## Creation of the training dataset and training process documented
+
+
+The README describes how the model was trained and what the characteristics of the dataset are. Information such as how the dataset was generated and examples of images from the dataset should be included.	
+
+
