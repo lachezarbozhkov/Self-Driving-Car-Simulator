@@ -71,9 +71,6 @@ No tire may leave the drivable portion of the track surface. The car may not pop
 - h5py
 * Install simulator from links above.
 * Play and generate training data.
-
-For the data cleaning and video generations:
-
 * conda install -c menpo opencv3
 * pip install moviepy
 
