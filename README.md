@@ -58,7 +58,24 @@ Question | Answer
 Is the car able to navigate correctly on test data? | Yes.
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle). | Yes.
 
+## Install the env:
 
+* Install anaconda python 3.5
+* Install packeges: 
+- tensorflow
+- numpy
+- flask-socketio
+- eventlet
+- pillow
+- keras
+- h5py
+* Install simulator from links above.
+* Play and generate training data.
+
+For the data cleaning and video generations:
+
+* conda install -c menpo opencv3
+* pip install moviepy
 
 ## Solution design
 
