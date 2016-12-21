@@ -22,7 +22,6 @@ model = None
 prev_image_array = None
 
 def load_img(img, resize=True, crop_top=20, crop_bottom=-1):
-    img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     if resize:
         img = cv2.resize(img,(160, 80), interpolation = cv2.INTER_CUBIC)
     if crop_top:
@@ -51,9 +50,10 @@ def telemetry(sid, data):
     transformed_image_array = image_array[None, :, :, :]
     # This model currently assumes that the features of the model are just the images. Feel free to change this.
     steering_angle = float(model.predict(transformed_image_array, batch_size=1))
-    steering_angle = max(min(steering_angle, 0.6), -0.6)
+    steering_angle = max(min(steering_angle, 1), -1)
     # The driving model currently just outputs a constant throttle. Feel free to edit this.
-    throttle = 0.1 + max(0, 0.6 - abs(steering_angle*2))  # 0.2
+    # throttle = 0.1 + max(0, 0.6 - abs(steering_angle*2))  # 0.2
+    throttle = 0.2
     print(steering_angle, throttle)
     send_control(steering_angle, throttle)
 
