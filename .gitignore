@@ -89,3 +89,8 @@ ENV/
 .ropeproject
 
 Default Mac desktop Universal.app
+IMG
+
+Archive
+*.csv
+
