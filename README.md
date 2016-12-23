@@ -8,6 +8,9 @@ This README describes how the model was trained and what the characteristics of 
 ## The results
 Let's start with the fun part. The model was able to learn from training set based only on the first track. It learned to drive safely and smoothly through the whole track. Also, the model generalized and is able to drive very well on the second track.
 
+The model is trained and evaluated only on the 640x480 resolution with lowest quality details. It may not perform as well on different resolutions and graphics quality.
+To run the model on the second track, change the `throttle` variable to `0.3` in `drive.py`.
+
 You can see the simulation driving in the following videos:
 <br/> _Sorry for the picture-links, the README.md does not support video embedding._
 
