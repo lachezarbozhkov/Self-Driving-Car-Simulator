@@ -177,8 +177,8 @@ Training data has been chosen to induce the desired behavior in the simulation (
 
 Question | Answer
 ------ | -------
-Is the solution design documented? | Yes, at the top.
-The README thoroughly discusses the approach taken for deriving and designing a model architecture fit for solving the given problem. | Yes, at the bottom.
+Is the solution design documented? | Yes.
+The README thoroughly discusses the approach taken for deriving and designing a model architecture fit for solving the given problem. | Yes.
 Is the model architecture documented? | Yes.
 The README provides sufficient details of the characteristics and qualities of the architecture, such as the type of model used, the number of layers, the size of each layer. Visualizations emphasizing particular qualities of the architecture are encouraged. | Yes.
 Is the creation of the training dataset and training process documented? | Yes.
