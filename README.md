@@ -14,7 +14,8 @@ The dataset preparaion can be found in [Prepare Train Data.ipynb](Prepare%20Trai
 Total number of generated images for training is around 55k. <br/>
 You can see a video of the full training set, with added steering angle in the following video: <br/>
 [https://www.youtube.com/watch?v=3qQvYdbr8PM](https://www.youtube.com/watch?v=3qQvYdbr8PM)
-<iframe width="640" height="360" src="https://www.youtube.com/embed/3qQvYdbr8PM" frameborder="0" allowfullscreen></iframe>
+
+[![ScreenShot](http://img.youtube.com/vi/3qQvYdbr8PM/0.jpg)](https://www.youtube.com/watch?v=3qQvYdbr8PM)
 
 
 
