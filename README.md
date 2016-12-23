@@ -29,16 +29,79 @@ Other things I tried and removed from the final model:
 * Crop pixels from bottom.
 * Resize (downscaling) image and different crop sizes.
 
-The preprocessing step can seen in `load_img` function in [Train-the-model.ipynb](Train-the-model.ipynb)
+The preprocessing step can be seen in `load_img` function in [Train-the-model.ipynb](Train-the-model.ipynb)
+
+## Solution design and training process
+
+The final model consists of: <br/>
+5 convolutional layers and 3 fully connected. Activation is elu, cost function is mse (regression) and optimizer is adam.
+
+The code of the final model:
+```
+model = Sequential()
+model.add(Lambda(normalize, input_shape=input_shape))
+model.add(Convolution2D(16, 5, 5, subsample=(2, 2), border_mode='valid', activation='elu'))
+model.add(Convolution2D(32, 5, 5, subsample=(2, 2), border_mode='valid', activation='elu'))
+model.add(Convolution2D(64, 5, 5, subsample=(2, 2), border_mode='valid', activation='elu'))
+model.add(Convolution2D(64, 3, 3, subsample=(2, 2), border_mode='valid', activation='elu'))
+model.add(Convolution2D(64, 3, 3, subsample=(2, 2), border_mode='valid', activation='elu'))
+model.add(Flatten())
+model.add(Dropout(0.5))
+model.add(Dense(256, activation='elu'))
+model.add(Dropout(0.5))
+model.add(Dense(10, activation='elu'))
+model.add(Dense(1))
+
+adam = Adam(lr=0.0001)
+model.compile(loss='mse', optimizer=adam)
+model.summary()
+```
+
+And the leayers shape:
+
+```____________________________________________________________________________________________________
+Layer (type)                     Output Shape          Param       Connected to                     
+====================================================================================================
+lambda_1 (Lambda)                (None, 99, 320, 3)    0           lambda_input_1[0][0]             
+____________________________________________________________________________________________________
+convolution2d_1 (Convolution2D)  (None, 48, 158, 16)   1216        lambda_1[0][0]                   
+____________________________________________________________________________________________________
+convolution2d_2 (Convolution2D)  (None, 22, 77, 32)    12832       convolution2d_1[0][0]            
+____________________________________________________________________________________________________
+convolution2d_3 (Convolution2D)  (None, 9, 37, 64)     51264       convolution2d_2[0][0]            
+____________________________________________________________________________________________________
+convolution2d_4 (Convolution2D)  (None, 4, 18, 64)     36928       convolution2d_3[0][0]            
+____________________________________________________________________________________________________
+convolution2d_5 (Convolution2D)  (None, 1, 8, 64)      36928       convolution2d_4[0][0]            
+____________________________________________________________________________________________________
+flatten_1 (Flatten)              (None, 512)           0           convolution2d_5[0][0]            
+____________________________________________________________________________________________________
+dropout_1 (Dropout)              (None, 512)           0           flatten_1[0][0]                  
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 256)           131328      dropout_1[0][0]                  
+____________________________________________________________________________________________________
+dropout_2 (Dropout)              (None, 256)           0           dense_1[0][0]                    
+____________________________________________________________________________________________________
+dense_2 (Dense)                  (None, 10)            2570        dropout_2[0][0]                  
+____________________________________________________________________________________________________
+dense_3 (Dense)                  (None, 1)             11          dense_2[0][0]                    
+====================================================================================================
+Total params: 273,077
+Trainable params: 273,077
+Non-trainable params: 0
+____________________________________________________________________________________________________
+```
+
+Plot of the final model: 
+<img src="model.png" alt="Plot of the final model" width="50px" style="width: 50px;"/>
 
 
-## and training process documented
+##  documented
 
 
 
 
 
-## Solution design
 
 
 ## Approach taken
