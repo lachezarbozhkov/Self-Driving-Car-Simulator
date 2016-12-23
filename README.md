@@ -5,17 +5,34 @@ Deep Learning Behaviour Cloning for Self Driving Car Simulator
 
 This README describes how the model was trained and what the characteristics of the dataset are. Information such as how the dataset was generated and video of the images from the train dataset and the simulations are included.	
 
-## Creation of the training dataset and training process documented
+## Creation of the training dataset
 The udacity self-driving-car simulator was used to generate train and CV image sets including the steering angle. <br/>
-For generating the dataset I played the game on the first track only. The 640x480 resolution of the game was used with lowest quality details. When in training mode the game produces images from _center_, _left_, and _right_ angle cameras and the  angle postion of the steering wheel. Writing the image paths and steering angle to a csv file.
-For the train set I used the my own recorded data from track one, including _recovery data_. Also used the training data provided from _udacity_. Used the _left_ and _right_ images with manually augmented steering angle from the images, except recovery data for aditional train data - the model learned to aim for centering between the lanes. <br/>
+For generating the dataset I played the game on the first track only. The game resolution while playing was 640x480 with lowest quality details. The game produces images from _center_, _left_, and _right_ angle cameras and the  angle postion of the steering wheel in training mode, writing the images path and steering angle of current frame to a csv file.
+For the train set I used my own recorded data from track one, including _recovery data_ and also used the training data provided by _udacity_. Used the _left_ and _right_ images with manually augmented steering angle, except recovery data for aditional train data - the model learned to aim for centering between the lanes. <br/>
 The dataset preparaion can be found in [Prepare Train Data.ipynb](Prepare%20Train%20Data.ipynb)
 
 Total number of generated images for training is around 55k. <br/>
-You can see a video of the full training set, with added steering angle in the following video: <br/>
+You can see a video of the full training set, including augmented steering angle in the following video: <br/>
 [https://www.youtube.com/watch?v=3qQvYdbr8PM](https://www.youtube.com/watch?v=3qQvYdbr8PM)
 
 [![ScreenShot](http://img.youtube.com/vi/3qQvYdbr8PM/0.jpg)](https://www.youtube.com/watch?v=3qQvYdbr8PM)
+<br/> _Sorry for the ^^ picture-link, README.md doesn't support video embeding._
+<br/> You can see the recovery data after 14:03.
+
+## Data preprocessing
+
+Experimented a lot with preprocessing. Final version of the model, doesn't resize the train image size. Uses the 3 RGB channels. Crops the top 60px from the image (mostly trees and skies). The data normalization is done by `x / 255 - 0.5` in the first layer of the NN.
+Other things I tried and removed from the final model:
+
+* Convert iamge to grayscalse.
+* Convert image to HSL color values.
+* Crop pixels from bottom.
+* Resize (downscaling) image and different crop sizes.
+
+The preprocessing step can seen in `load_img` function in [Train-the-model.ipynb](Train-the-model.ipynb)
+
+
+## and training process documented
 
 
 
